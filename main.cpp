@@ -1,8 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
-
-//=======================
 
 template <class T>
 class Array
@@ -109,8 +107,15 @@ double IntArray::Average()
 
 int IntArray::Search(int x)
 {
-    for (int i=0; i<=size; i++)
-        if (data[i]==x) return(i);
+    int L=0; int R=size-1;
+    while (L<R)
+    {
+        int k=(L+R)/2;
+        if (data[k]==x)
+            return(k);
+        if (data[k]<x) L=k+1;
+        else R=k-1;
+    }
     return(-1);
 }
 
@@ -150,5 +155,4 @@ int main()
     cout<< (arr.Search(3)>=0?"C":"Khong c")<<"o giai tri 3 trong mang"<<endl;
     arr.Sort();
     cout<<arr;
-    system("pause");
 }
